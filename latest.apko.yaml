@@ -7,7 +7,8 @@ contents:
   packages:
     - wolfi-baselayout
     - busybox
-    - hello@local
+    - azure-storage-azcopy@local
+    - postgresql-15-client
 
 accounts:
   groups:
@@ -20,7 +21,8 @@ accounts:
   run-as: 65532
 
 entrypoint:
-  command: /usr/local/bin/hello
+  command: /usr/local/bin/azcopy
+cmd: --help
 
 archs:
 - amd64

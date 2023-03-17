@@ -1,0 +1,31 @@
+package:
+  name: azure-storage-azcopy
+  version: 10.17.0
+  epoch: 0
+  description: Hello world
+  target-architecture:
+    - all
+  copyright:
+    - paths:
+        - "*"
+      attestation: TODO
+      license: MIT
+
+environment:
+  contents:
+    keyring:
+      - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+    repositories:
+      - https://packages.wolfi.dev/os
+    packages:
+      - ca-certificates-bundle
+      - busybox
+      - go
+pipeline:
+  - uses: fetch
+    with:
+      expected-sha256: f970ad5a68fb0a84935bedc687a6ed8a9d051791e61b032a433ff1cf0ac38105
+      uri: https://github.com/Azure/azure-storage-azcopy/archive/refs/tags/v${{package.version}}.tar.gz
+  - runs: |
+      go build
+      install -D -m 0755 "./azure-storage-azcopy" -t "${{targets.destdir}}/usr/local/bin"
