@@ -2,7 +2,7 @@ package:
   name: azure-storage-azcopy
   version: 10.17.0
   epoch: 0
-  description: Hello world
+  description: The new Azure Storage data transfer utility - AzCopy v10
   target-architecture:
     - all
   copyright:
@@ -29,3 +29,4 @@ pipeline:
   - runs: |
       go build
       install -D -m 0755 "./azure-storage-azcopy" -t "${{targets.destdir}}/usr/local/bin"
+  - uses: strip
